@@ -33,7 +33,7 @@ export class CategoryService {
 		const oldCategory = await this.categoryRepository.findOne({
 			where: { name: dto.name }
 		})
-		if (oldCategory) throw new BadRequestException()
+		if (oldCategory) throw new BadRequestException('Категория уже существует')
 
 		const options: CategoryOptionDto[] = []
 
@@ -47,10 +47,15 @@ export class CategoryService {
 		})
 
 		if (dto.parent) {
-			newCategory.parent = await this.getById(dto.parent.id)
+			const parent = await this.getById(dto.parent.id)
+			newCategory.parent = parent
 		}
 
 		return await this.categoryRepository.save(newCategory)
+	}
+
+	async delete(id: number) {
+		return await this.categoryRepository.delete(id)
 	}
 
 	async getRoot() {

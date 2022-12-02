@@ -1,6 +1,7 @@
 import {
 	Body,
 	Controller,
+	Delete,
 	Get,
 	Param,
 	Post,
@@ -29,6 +30,11 @@ export class CategoryController {
 	@Get('/:id')
 	async get(@Param('id') id: number) {
 		return await this.categoryService.getById(id)
+	}
+
+	@Delete('/:id')
+	async delete(@Param('id') id: number) {
+		return await this.categoryService.delete(id)
 	}
 
 	@Put()

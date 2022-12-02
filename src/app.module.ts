@@ -5,8 +5,9 @@ import { ProductModule } from './product/product.module'
 import { CategoryModule } from './category/category.module'
 import { TypeOrmModule } from '@nestjs/typeorm'
 import { getTypeOrmConfig } from './config/db.config'
-import { AuthModule } from './auth/auth.module';
-import { MediaModule } from './media/media.module';
+import { AuthModule } from './auth/auth.module'
+import { MediaModule } from './media/media.module'
+import { getBaseConfig } from './config/base.config'
 
 @Module({
 	imports: [
